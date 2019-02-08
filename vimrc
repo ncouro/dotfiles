@@ -1,17 +1,26 @@
-set nocompatible
+ set nocompatible
 
 "	 - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
 Plug 'bazelbuild/vim-bazel'
-Plug 'python-mode/python-mode'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'rhysd/vim-clang-format'
+Plug 'morhetz/gruvbox'
+Plug 'airblade/vim-gitgutter'
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
+Plug 'wsdjeg/FlyGrep.vim'
+Plug 'fatih/vim-go'
+Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'Shougo/deoplete.nvim'
 " Initialize plugin system
 call plug#end()
 
@@ -56,13 +65,30 @@ endfunction
 " My mappings
 nnoremap <leader>space :call StripTrailingWhitespace()<CR>
 nnoremap <leader>f :noautocmd lvimgrep <cword> **/*<CR>
-nnoremap <silent><C-p> :FZF<CR>
+nnoremap <silent><C-o> :GFiles<CR>
+let g:Lf_ShortcutF = '<C-P>'
 
 " Doesn't work on macOS
 " set clipboard=unnamedplus
 
-" Don't show documentation pop-up in python-mode
+" Don't show documentation pop-up in python-model 
 set completeopt=menu
+let g:pymode_rope=0
 
 let g:airline_theme='luna'
+
+let g:clang_format#code_style="google"
+
+" Neovim
+" To map <Esc> to exit terminal-mode:
+tnoremap <Esc> <C-\><C-n>
+
+colorscheme delek
+set background=dark
+
+
+" Python PEP8
+au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
+
+set encoding=utf-8
 
