@@ -16,11 +16,12 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'rhysd/vim-clang-format'
 Plug 'morhetz/gruvbox'
 Plug 'airblade/vim-gitgutter'
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
+" Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'wsdjeg/FlyGrep.vim'
 Plug 'fatih/vim-go'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'Shougo/deoplete.nvim'
+Plug 'davidhalter/jedi-vim'
 " Initialize plugin system
 call plug#end()
 
@@ -74,6 +75,10 @@ let g:Lf_ShortcutF = '<C-P>'
 " Don't show documentation pop-up in python-model 
 set completeopt=menu
 let g:pymode_rope=0
+
+" Avoids a lot of python-mode errors
+let g:pymode_python = 'python3'
+
 
 let g:airline_theme='luna'
 
